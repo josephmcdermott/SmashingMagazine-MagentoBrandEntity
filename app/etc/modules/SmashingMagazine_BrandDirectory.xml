@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SmashingMagazine_BrandDirectory>
+            <active>true</active>
+            <codePool>community</codePool>
+        </SmashingMagazine_BrandDirectory>
+    </modules>
+</config>

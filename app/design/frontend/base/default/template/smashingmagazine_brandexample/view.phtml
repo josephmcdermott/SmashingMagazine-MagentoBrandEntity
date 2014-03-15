@@ -1,0 +1,21 @@
+<?php $brand = $this->getCurrentBrand(); ?>
+<?php if ($brand): ?>
+    
+    <h1><?php echo $brand->getName(); ?></h1>
+    <p><a href="<?php echo $this->helper('smashingmagazine_brandexample/brand')->getBrandUrl($brand); ?>" title="<?php echo $this->escapeHtml($brand->getName()); ?>"><?php echo $brand->getName(); ?></a></p>
+    <?php echo $brand->getDescription(); ?>
+    <p><a href="<?php echo $this->getUrl('smashingmagazine_brandexample/index/index') ?>" title="<?php echo $this->__('Back to Brand Directory'); ?>"><?php echo $this->__('&laquo; Back to Brand Directory'); ?></a></p>
+    
+    <?php $productCollection = $this->getProductCollection(); ?>
+    <?php if ($productCollection->count() > 0): ?>
+        
+        <h2>Products</h2>
+        <ul>
+            <?php foreach ($productCollection as $_product): ?>
+                <li><a href="<?php echo $this->getUrl('catalog/product/view', array('id' => $_product->getId())); ?>" title="<?php echo $this->escapeHtml($_product->getName()); ?>"><?php echo $_product->getName(); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+        
+    <?php endif; ?>
+    
+<?php endif; ?>

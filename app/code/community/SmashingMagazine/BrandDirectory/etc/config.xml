@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SmashingMagazine_BrandDirectory>
+            <!--
+            this is the version number our module is currently at. in order
+            for setup scripts to run, their version number must be less than 
+            or equal to this value.
+            
+            as we add upgrade scripts, we increment this value. The next time
+            your Magento instance is accessed, Magento will compare values in
+            DB table 'core_resource' against this value. If the DB is lower, 
+            it will attempt to run any setup scripts for the module and then 
+            update the database table to match this value.
+            -->
+            <version>0.0.1</version>
+        </SmashingMagazine_BrandDirectory>
+    </modules>
+    <global>
+        
+        <!-- 
+        add an adminhtml block definition 
+        -->
+        <blocks>
+            <smashingmagazine_branddirectory_adminhtml>
+               <class>SmashingMagazine_BrandDirectory_Block_Adminhtml</class>
+            </smashingmagazine_branddirectory_adminhtml>
+        </blocks>
+        
+        <!-- 
+        add a helper definition for use in adminhtml.xml menu translation 
+        -->
+        <helpers>
+            <smashingmagazine_branddirectory>
+                <class>SmashingMagazine_BrandDirectory_Helper</class>
+            </smashingmagazine_branddirectory>
+        </helpers>
+        
+        <models>
+            
+            <!-- 
+            this is the Model alias referred to in install-0.0.1.php 
+            -->
+            <smashingmagazine_branddirectory>
+                <!-- 
+                this tells Magento where to find Models for this module 
+                -->
+                <class>SmashingMagazine_BrandDirectory_Model</class>
+                
+                <!-- 
+                this tells Magento where to find Resource 
+                materials for this module 
+                -->
+      <resourceModel>smashingmagazine_branddirectory_resource</resourceModel>
+                
+            </smashingmagazine_branddirectory>
+            
+            <!-- 
+            this alias must match the above <resourceModel/> value 
+            -->
+            <smashingmagazine_branddirectory_resource>
+                <!-- 
+                this tells Magento where to find Resource
+                Models for this module 
+                -->
+                <class>SmashingMagazine_BrandDirectory_Model_Resource</class>
+                
+                <entities>
+                    
+                    <!-- 
+                    this is the table alias referred to in install-0.0.1.php 
+                    -->
+                    <brand>
+                        
+                        <!-- 
+                            this is the actual name of the DB table 
+                        -->
+                        <table>smashingmagazine_branddirectory_brand</table>
+                        
+                    </brand>
+                    
+                </entities>
+                
+            </smashingmagazine_branddirectory_resource>
+            
+        </models>
+        
+        <resources>
+            
+            <!-- 
+            this must match our folder name under the module sql folder 
+            -->
+            <smashingmagazine_branddirectory_setup>
+                
+                <setup>
+                    
+                    <!-- 
+                    which module do the setup 
+                    scripts in this location belong to 
+                    -->
+                    <module>SmashingMagazine_BrandDirectory</module>
+                    
+                    <!-- 
+                    within each setup script, this 
+                    value determines the class of $this 
+                    -->
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                    
+                </setup>
+                
+                <!--
+                this is only relevant if you have multiple DB connections 
+                -->
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+                
+            </smashingmagazine_branddirectory_setup>
+            
+        </resources>
+        
+    </global>
+    
+    <!-- add a router for access to our admin panel controller -->
+    <admin>
+        <routers>
+            
+            <!-- this is the alias for this router -->
+            <smashingmagazine_branddirectory_admin>
+                
+                <!-- 
+                basically inform Magento to use
+                admin scope for requests to this router 
+                -->
+                <use>admin</use>
+                
+                <args>
+                    <!--
+                    this tells Magento where to find 
+                    adminhtml controllers for this module 
+                    -->
+                   <module>SmashingMagazine_BrandDirectory_Adminhtml</module>
+                    
+                    <!-- this is the term used in the actual URL -->
+                    <frontName>brand-directory-admin</frontName>
+                </args>
+                
+            </smashingmagazine_branddirectory_admin>
+            
+        </routers>
+    </admin>
+    
+</config>

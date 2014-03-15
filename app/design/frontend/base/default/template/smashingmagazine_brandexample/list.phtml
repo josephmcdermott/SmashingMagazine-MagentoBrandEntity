@@ -1,0 +1,16 @@
+<h1><?php echo $this->__('Brand Directory Example'); ?></h1>
+
+<?php $brandCollection = $this->getBrandCollection(); ?>
+<?php if ($brandCollection->count() > 0): ?>
+    
+    <ul>
+        <?php foreach ($brandCollection as $_brand): ?>    
+            <li><a href="<?php echo $this->helper('smashingmagazine_brandexample/brand')->getBrandUrl($_brand); ?>" title="<?php echo $this->escapeHtml($_brand->getName()); ?>"><?php echo $_brand->getName(); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    
+<?php else: ?>
+    
+    <?php echo $this->__('There are no brands to display at this time.'); ?>
+    
+<?php endif; ?>

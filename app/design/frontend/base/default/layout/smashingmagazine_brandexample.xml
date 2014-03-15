@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout>
+    
+    <smashingmagazine_brandexample_index_index>
+        <reference name="content">
+            <block type="smashingmagazine_brandexample/list" name="smashingmagazine.brandexample.list" template="smashingmagazine_brandexample/list.phtml" />
+        </reference>
+    </smashingmagazine_brandexample_index_index>
+    
+    <smashingmagazine_brandexample_index_view>
+        <reference name="content">
+            <block type="smashingmagazine_brandexample/view" name="smashingmagazine.brandexample.view" template="smashingmagazine_brandexample/view.phtml" />
+        </reference>
+    </smashingmagazine_brandexample_index_view>
+    
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="smashingmagazine_brandexample/catalog_product_view_link" name="catalog.product.view.other.link" as="other" template="smashingmagazine_brandexample/catalog/product/view/link.phtml"/>
+        </reference>
+    </catalog_product_view>
+    
+</layout>

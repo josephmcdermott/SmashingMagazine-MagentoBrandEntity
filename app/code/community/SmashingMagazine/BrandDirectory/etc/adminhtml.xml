@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <!-- we are defining a new admin panel menu item -->
+    <menu>
+        
+        <!--
+        first create a top level menu item which will appear alongside CMS
+        -->
+        <smashingmagazine_branddirectory translate="title"
+                module="smashingmagazine_branddirectory">
+            <title>Brand Directory</title>
+            <sort_order>75</sort_order>
+            <depends>
+                <module>SmashingMagazine_BrandDirectory</module>
+            </depends>
+            
+            <!-- under this top level menu create a child menu item -->
+            <children>
+                <brand translate="title" 
+                        module="smashingmagazine_branddirectory">
+                    <title>Manage Brands</title>
+                    <sort_order>10</sort_order>
+                    
+                    <!-- 
+                    when the menu is clicked, take the user here 
+                    -->
+                 <action>smashingmagazine_branddirectory_admin/brand</action>
+                    
+                </brand>
+            </children>
+        </smashingmagazine_branddirectory>
+    </menu>
+    
+    <!-- define ACL for access to these menu items -->
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <smashingmagazine_branddirectory translate="title"
+                            module="smashingmagazine_branddirectory">
+                        <title>Brand Directory</title>
+                        <sort_order>75</sort_order>
+                        <children>
+                            <brand translate="title" 
+                                    module="smashingmagazine_branddirectory">
+                                <title>Manage Brands</title>
+                            </brand>
+                        </children>
+                    </smashingmagazine_branddirectory>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

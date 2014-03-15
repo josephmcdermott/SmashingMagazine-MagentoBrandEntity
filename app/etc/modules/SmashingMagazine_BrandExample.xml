@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SmashingMagazine_BrandExample>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <SmashingMagazine_BrandDirectory/>
+            </depends>
+        </SmashingMagazine_BrandExample>
+    </modules>
+</config>
