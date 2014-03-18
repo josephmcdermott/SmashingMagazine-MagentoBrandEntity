@@ -116,4 +116,40 @@ class SmashingMagazine_BrandDirectory_Adminhtml_BrandController
             'smashingmagazine_branddirectory_admin/brand/index'
         );
     }
+    
+    /**
+     * Thanks to Ben for pointing out this method was missing. Without 
+     * this method the ACL rules configured in adminhtml.xml are ignored.
+     */
+    protected function _isAllowed()
+    {
+        /**
+         * we include this switch to demonstrate that you can add action 
+         * level restrictions in your ACL rules. The isAllowed() method will
+         * use the ACL rule we have configured in our adminhtml.xml file:
+         * - acl 
+         * - - resources
+         * - - - admin
+         * - - - - children
+         * - - - - - smashingmagazine_branddirectory
+         * - - - - - - children
+         * - - - - - - - brand
+         * 
+         * eg. you could add more rules inside brand for edit and delete.
+         */
+        $actionName = $this->getRequest()->getActionName();
+        switch ($actionName) {
+            case 'index':
+            case 'edit':
+            case 'delete':
+                // intentionally no break
+            default:
+                $adminSession = Mage::getSingleton('admin/session');
+                $isAllowed = $adminSession
+                    ->isAllowed('smashingmagazine_branddirectory/brand');
+                break;
+        }
+        
+        return $isAllowed;
+    }
 }

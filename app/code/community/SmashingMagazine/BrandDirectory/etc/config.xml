@@ -104,7 +104,7 @@
                     within each setup script, this 
                     value determines the class of $this 
                     -->
-                    <class>Mage_Eav_Model_Entity_Setup</class>
+                    <class>Mage_Core_Model_Resource_Setup</class>
                     
                 </setup>
                 
